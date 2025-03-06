@@ -1,11 +1,16 @@
 package com.example.android_4
 
 import android.app.Activity
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         val playVideo: Button = findViewById(R.id.playVideo)
         val pauseVideo: Button = findViewById(R.id.pauseVideo)
         val stopVideo: Button = findViewById(R.id.stopVideo)
+
+        val downloadMedia: Button = findViewById(R.id.downloadMedia)
+        val urlInput: EditText = findViewById(R.id.urlInput)
 
         playAudio.setOnClickListener {
             if (isAudioSelected && selectedMediaUri != null) {
@@ -78,6 +86,27 @@ class MainActivity : AppCompatActivity() {
                 putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("audio/*", "video/*"))
             }
             selectMediaLauncher.launch(intent)
+        }
+
+        downloadMedia.setOnClickListener {
+            val url = urlInput.text.toString()
+
+            if (url.isNotEmpty()) {
+                val uri = Uri.parse(url)
+                val request = DownloadManager.Request(uri)
+                    .setTitle("Downloading Media")
+                    .setDescription("Downloading media file...")
+                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, uri.lastPathSegment)
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
+
+                val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                downloadManager.enqueue(request)
+
+                Toast.makeText(this, "Download started...", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Please enter a valid URL", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

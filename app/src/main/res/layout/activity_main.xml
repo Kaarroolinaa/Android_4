@@ -8,8 +8,8 @@
     <VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
-        android:layout_marginTop="60dp"
-        android:layout_height="400dp" />
+        android:layout_height="400dp"
+        android:layout_marginTop="50dp" />
 
     <Button
         android:id="@+id/playAudio"
@@ -56,5 +56,20 @@
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:text="Select Media" />
+
+    <EditText
+        android:id="@+id/urlInput"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="40dp"
+        android:hint="Enter media URL" />
+
+    <Button
+        android:id="@+id/downloadMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="-135dp"
+        android:text="Download Media" />
 
 </LinearLayout>
