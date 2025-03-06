@@ -2,6 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_height="400dp" />
+
+    <Button
+        android:id="@+id/playAudio"
+        android:text="Play Audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/pauseAudio"
+        android:text="Pause Audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/stopAudio"
+        android:text="Stop Audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/playVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="-145dp"
+        android:text="Play Video" />
+
+    <Button
+        android:id="@+id/pauseVideo"
+        android:text="Pause Video"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/stopVideo"
+        android:text="Stop Video"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_height="wrap_content" />
 </LinearLayout>
